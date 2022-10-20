@@ -1,0 +1,37 @@
+object frmDm: TfrmDm
+  Height = 480
+  Width = 640
+  object Conexao: TFDConnection
+    Params.Strings = (
+      'Database=D:\Controla\Win32\Debug\CONTROLA.FDB'
+      'User_Name=SYSDBA'
+      'Password=masterkey'
+      'Server=localhost'
+      'Port=3050'
+      'DriverID=FB')
+    Connected = True
+    LoginPrompt = False
+    Left = 104
+    Top = 88
+  end
+  object tb_produtos: TFDQuery
+    Connection = Conexao
+    SQL.Strings = (
+      'SELECT *  FROM PRODUTOS')
+    Left = 296
+    Top = 96
+  end
+  object tb_secao: TFDQuery
+    Connection = Conexao
+    SQL.Strings = (
+      'SELECT  *  FROM SECOES'
+      ' ')
+    Left = 200
+    Top = 96
+  end
+  object FDStoredProc1: TFDStoredProc
+    Connection = Conexao
+    Left = 512
+    Top = 224
+  end
+end

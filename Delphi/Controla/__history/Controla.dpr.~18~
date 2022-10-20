@@ -1,0 +1,27 @@
+program Controla;
+
+uses
+  Vcl.Forms,
+  UFrmMenuPrincipal in 'UFrmMenuPrincipal.pas' {frmMenu},
+  uFrmCadastroPadrao in 'uFrmCadastroPadrao.pas' {frmCadastroPadrao},
+  uFrmCadastroProdutos in 'uFrmCadastroProdutos.pas' {frmCadastroProdutos},
+  uFrmDM in 'uFrmDM.pas' {frmDm: TDataModule},
+  uFrmProdutosPorSecao in 'uFrmProdutosPorSecao.pas' {frmProdSecao},
+  uFrmCadastroSecao in 'uFrmCadastroSecao.pas' {frmCadastroSecao},
+  UfrmRelPadrao in 'UfrmRelPadrao.pas' {frmRel},
+  UfrmRelProdutosPrint in 'UfrmRelProdutosPrint.pas' {formRelPrint},
+  UFrmRelProdSecao in 'UFrmRelProdSecao.pas' {frmRelProdSecao},
+  UfrmRelProdSecaoPrint in 'UfrmRelProdSecaoPrint.pas' {frmProdSecaoPrint};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TfrmMenu, frmMenu);
+  Application.CreateForm(TfrmDm, frmDm);
+  Application.CreateForm(TfrmRelProdSecao, frmRelProdSecao);
+  Application.CreateForm(TfrmProdSecaoPrint, frmProdSecaoPrint);
+  Application.Run;
+
+end.

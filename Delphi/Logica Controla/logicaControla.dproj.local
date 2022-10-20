@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2022/09/13 17:15:41.000.542,=C:\Users\Paulo Cezar\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/09/13 17:37:22.000.005,=C:\Users\Paulo Cezar\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/09/13 22:25:43.000.262,=C:\Users\Paulo Cezar\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/09/13 22:36:07.000.309,D:\Logica Controla\UPrincipal.pas=C:\Users\Paulo Cezar\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/09/13 22:36:07.000.309,D:\Logica Controla\UPrincipal.dfm=C:\Users\Paulo Cezar\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2022/09/13 22:36:20.000.580,D:\Logica Controla\logicaControla.dproj=C:\Users\Paulo Cezar\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2022/09/16 12:17:34.000.293,=D:\Logica Controla\Unit2.pas</Transaction>
+    <Transaction>2022/09/16 12:27:51.000.903,D:\Logica Controla\Unit2.dfm=D:\Logica Controla\logica2.dfm</Transaction>
+    <Transaction>2022/09/16 12:27:51.000.903,D:\Logica Controla\Unit2.pas=D:\Logica Controla\logica2.pas</Transaction>
+  </Transactions>
+</BorlandProject>

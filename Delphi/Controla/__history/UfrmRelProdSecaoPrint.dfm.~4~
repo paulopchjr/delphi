@@ -1,0 +1,320 @@
+object frmProdSecaoPrint: TfrmProdSecaoPrint
+  Left = 0
+  Top = 0
+  Caption = 'frmProdSecaoPrint'
+  ClientHeight = 441
+  ClientWidth = 624
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  TextHeight = 15
+  object RLReportProSecao: TRLReport
+    Left = -56
+    Top = -40
+    Width = 794
+    Height = 1123
+    DataSource = frmDm.DataSource1
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = []
+    object cabecalho: TRLBand
+      Left = 38
+      Top = 38
+      Width = 718
+      Height = 37
+      BandType = btHeader
+      Borders.Sides = sdCustom
+      Borders.DrawLeft = False
+      Borders.DrawTop = False
+      Borders.DrawRight = False
+      Borders.DrawBottom = True
+      object Label1: TLabel
+        Left = 272
+        Top = 15
+        Width = 105
+        Height = 16
+        Alignment = taCenter
+        Caption = 'Controla'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object RLSystemInfo1: TRLSystemInfo
+        Left = 40
+        Top = 15
+        Width = 39
+        Height = 16
+        Text = ''
+      end
+      object RLSystemInfo2: TRLSystemInfo
+        Left = 576
+        Top = 15
+        Width = 39
+        Height = 16
+        Info = itHour
+        Text = ''
+      end
+    end
+    object titulo: TRLBand
+      Left = 38
+      Top = 75
+      Width = 718
+      Height = 79
+      BandType = btTitle
+      object RLLabel1: TRLLabel
+        Left = 0
+        Top = 0
+        Width = 718
+        Height = 24
+        Align = faTop
+        Alignment = taCenter
+        Caption = 'Relat'#243'rio de Produtos Por Se'#231#227'o'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -21
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object RLLabel2: TRLLabel
+        Left = 0
+        Top = 24
+        Width = 718
+        Height = 16
+        Align = faTop
+        Alignment = taCenter
+      end
+    end
+    object RLGroup1: TRLGroup
+      Left = 38
+      Top = 154
+      Width = 718
+      Height = 167
+      DataFields = 'SECAO'
+      object bandSecao: TRLBand
+        Left = 0
+        Top = 0
+        Width = 718
+        Height = 57
+        BandType = btHeader
+        object RLLabel3: TRLLabel
+          Left = 40
+          Top = 6
+          Width = 118
+          Height = 19
+          Caption = 'C'#243'digo Se'#231#227'o:'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object RLLabel4: TRLLabel
+          Left = 296
+          Top = 6
+          Width = 58
+          Height = 19
+          Caption = 'Se'#231#227'o:'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object RLDBText1: TRLDBText
+          Left = 164
+          Top = 6
+          Width = 108
+          Height = 16
+          DataField = 'CODIGO_SECAO'
+          DataSource = frmDm.DataSource1
+          Text = ''
+        end
+        object RLDBText2: TRLDBText
+          Left = 360
+          Top = 6
+          Width = 50
+          Height = 16
+          DataField = 'SECAO'
+          DataSource = frmDm.DataSource1
+          Text = ''
+        end
+        object RLLabel6: TRLLabel
+          Left = 42
+          Top = 29
+          Width = 116
+          Height = 16
+          Caption = 'C'#243'digo Produto'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object RLLabel7: TRLLabel
+          Left = 186
+          Top = 29
+          Width = 75
+          Height = 16
+          Caption = 'Descri'#231#227'o'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object RLLabel8: TRLLabel
+          Left = 296
+          Top = 29
+          Width = 108
+          Height = 16
+          Caption = 'Valor de Custo'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object RLLabel9: TRLLabel
+          Left = 427
+          Top = 29
+          Width = 110
+          Height = 16
+          Caption = 'Valor de Venda'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object RLLabel10: TRLLabel
+          Left = 560
+          Top = 29
+          Width = 61
+          Height = 18
+          Caption = 'Margem'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object RLDraw1: TRLDraw
+          Left = 42
+          Top = 51
+          Width = 573
+          Height = 1
+          DrawKind = dkLine
+        end
+      end
+      object BandProdutos: TRLBand
+        Left = 0
+        Top = 57
+        Width = 718
+        Height = 32
+        object RLDBText3: TRLDBText
+          Left = 64
+          Top = 6
+          Width = 64
+          Height = 17
+          DataField = 'CODIGO'
+          DataSource = frmDm.DataSource1
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Style = []
+          ParentFont = False
+          Text = ''
+        end
+        object RLDBText4: TRLDBText
+          Left = 186
+          Top = 6
+          Width = 92
+          Height = 17
+          DataField = 'DESCRICAO'
+          DataSource = frmDm.DataSource1
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Style = []
+          ParentFont = False
+          Text = ''
+        end
+        object RLDBText5: TRLDBText
+          Left = 307
+          Top = 6
+          Width = 103
+          Height = 17
+          DataField = 'VALOR_DE_CUSTO'
+          DataSource = frmDm.DataSource1
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Style = []
+          ParentFont = False
+          Text = ''
+        end
+        object RLDBText6: TRLDBText
+          Left = 440
+          Top = 6
+          Width = 89
+          Height = 17
+          DataField = 'VALOR_DE_VENDA'
+          DataSource = frmDm.DataSource1
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Style = []
+          ParentFont = False
+          Text = ''
+        end
+        object RLDBText7: TRLDBText
+          Left = 560
+          Top = 6
+          Width = 67
+          Height = 17
+          DataField = 'MARGEM'
+          DataSource = frmDm.DataSource1
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Style = []
+          ParentFont = False
+          Text = ''
+        end
+      end
+      object bandFooter: TRLBand
+        Left = 0
+        Top = 89
+        Width = 718
+        Height = 16
+        BandType = btFooter
+        Borders.Sides = sdCustom
+        Borders.DrawLeft = False
+        Borders.DrawTop = False
+        Borders.DrawRight = False
+        Borders.DrawBottom = False
+      end
+    end
+  end
+end

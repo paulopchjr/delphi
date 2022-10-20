@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2022/09/10 09:39:35.000.889,=C:\Users\Paulo Cezar\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/09/10 09:40:08.000.651,D:\Controla\UFrmMenuPrincipal.dfm=C:\Users\Paulo Cezar\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2022/09/10 09:40:08.000.651,D:\Controla\UFrmMenuPrincipal.pas=C:\Users\Paulo Cezar\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/09/10 09:40:14.000.116,D:\Controla\Controla.dproj=C:\Users\Paulo Cezar\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2022/09/10 09:46:26.000.702,=D:\Controla\Unit2.pas</Transaction>
+    <Transaction>2022/09/10 09:46:40.000.120,D:\Controla\uFrmCadastroPadrao.pas=D:\Controla\Unit2.pas</Transaction>
+    <Transaction>2022/09/10 09:46:40.000.120,D:\Controla\uFrmCadastroPadrao.dfm=D:\Controla\Unit2.dfm</Transaction>
+    <Transaction>2022/09/10 09:49:59.000.784,=D:\Controla\Unit1.pas</Transaction>
+    <Transaction>2022/09/10 09:50:28.000.714,D:\Controla\uFrmCadastroProdutos.dfm=D:\Controla\Unit1.dfm</Transaction>
+    <Transaction>2022/09/10 09:50:28.000.714,D:\Controla\uFrmCadastroProdutos.pas=D:\Controla\Unit1.pas</Transaction>
+    <Transaction>2022/09/10 09:54:23.000.465,=D:\Controla\Unit1.pas</Transaction>
+    <Transaction>2022/09/10 09:54:37.000.806,D:\Controla\uFrmPesquisaPadrao.dfm=D:\Controla\Unit1.dfm</Transaction>
+    <Transaction>2022/09/10 09:54:37.000.806,D:\Controla\uFrmPesquisaPadrao.pas=D:\Controla\Unit1.pas</Transaction>
+    <Transaction>2022/09/10 10:00:29.000.309,=D:\Controla\Unit1.pas</Transaction>
+    <Transaction>2022/09/10 10:00:42.000.908,D:\Controla\uFrmPesquisaProdutos.dfm=D:\Controla\Unit1.dfm</Transaction>
+    <Transaction>2022/09/10 10:00:42.000.908,D:\Controla\uFrmPesquisaProdutos.pas=D:\Controla\Unit1.pas</Transaction>
+    <Transaction>2022/09/10 10:11:16.000.082,=D:\Controla\Unit1.pas</Transaction>
+    <Transaction>2022/09/10 10:14:23.000.340,D:\Controla\uFrmDM.dfm=D:\Controla\Unit1.dfm</Transaction>
+    <Transaction>2022/09/10 10:14:23.000.340,D:\Controla\uFrmDM.pas=D:\Controla\Unit1.pas</Transaction>
+    <Transaction>2022/09/11 16:42:48.000.450,=D:\Controla\Unit1.pas</Transaction>
+    <Transaction>2022/09/11 16:43:46.000.808,D:\Controla\Unit1.pas=D:\Controla\uFrmProdutosPorSecao.pas</Transaction>
+    <Transaction>2022/09/11 16:43:46.000.808,D:\Controla\Unit1.dfm=D:\Controla\uFrmProdutosPorSecao.dfm</Transaction>
+    <Transaction>2022/09/11 20:41:49.000.306,=D:\Controla\Unit1.pas</Transaction>
+    <Transaction>2022/09/11 20:42:21.000.750,D:\Controla\Unit1.pas=D:\Controla\uFrmCadastroSecao.pas</Transaction>
+    <Transaction>2022/09/11 20:42:21.000.750,D:\Controla\Unit1.dfm=D:\Controla\uFrmCadastroSecao.dfm</Transaction>
+    <Transaction>2022/09/19 15:47:36.000.729,=D:\Controla\Unit1.pas</Transaction>
+    <Transaction>2022/09/19 15:47:46.000.366,D:\Controla\Unit1.pas=D:\Controla\uTeste.pas</Transaction>
+    <Transaction>2022/09/19 15:47:46.000.366,D:\Controla\Unit1.dfm=D:\Controla\uTeste.dfm</Transaction>
+    <Transaction>2022/09/19 16:28:02.000.096,=D:\Controla\Unit1.pas</Transaction>
+    <Transaction>2022/09/19 16:28:14.000.954,D:\Controla\UfrmRelatorioProdutos.dfm=D:\Controla\Unit1.dfm</Transaction>
+    <Transaction>2022/09/19 16:28:14.000.954,D:\Controla\UfrmRelatorioProdutos.pas=D:\Controla\Unit1.pas</Transaction>
+    <Transaction>2022/09/19 16:48:59.000.356,=D:\Controla\Unit1.pas</Transaction>
+    <Transaction>2022/09/19 16:53:36.000.350,=D:\Controla\Unit1.pas</Transaction>
+    <Transaction>2022/09/19 16:53:46.000.705,D:\Controla\UfrmRelPadrao.pas=D:\Controla\Unit1.pas</Transaction>
+    <Transaction>2022/09/19 16:53:46.000.705,D:\Controla\UfrmRelPadrao.dfm=D:\Controla\Unit1.dfm</Transaction>
+    <Transaction>2022/09/19 17:00:10.000.000,=D:\Controla\Unit1.pas</Transaction>
+    <Transaction>2022/09/19 17:00:23.000.515,D:\Controla\UfrmRelProdutos.dfm=D:\Controla\Unit1.dfm</Transaction>
+    <Transaction>2022/09/19 17:00:23.000.515,D:\Controla\UfrmRelProdutos.pas=D:\Controla\Unit1.pas</Transaction>
+    <Transaction>2022/09/20 13:30:34.000.826,=D:\Controla\Unit1.pas</Transaction>
+    <Transaction>2022/09/20 13:31:33.000.541,D:\Controla\UfrmRelProdutosPrint.dfm=D:\Controla\Unit1.dfm</Transaction>
+    <Transaction>2022/09/20 13:31:33.000.541,D:\Controla\UfrmRelProdutosPrint.pas=D:\Controla\Unit1.pas</Transaction>
+    <Transaction>2022/09/21 23:01:50.000.398,=D:\Controla\Unit1.pas</Transaction>
+    <Transaction>2022/09/21 23:02:09.000.176,D:\Controla\UFrmRelProdSecao.pas=D:\Controla\Unit1.pas</Transaction>
+    <Transaction>2022/09/21 23:02:09.000.176,D:\Controla\UFrmRelProdSecao.dfm=D:\Controla\Unit1.dfm</Transaction>
+    <Transaction>2022/09/22 00:16:06.000.689,=D:\Controla\Unit1.pas</Transaction>
+    <Transaction>2022/09/22 00:19:08.000.520,D:\Controla\Unit1.pas=D:\Controla\UfrmRelProdSecaoPrint.pas</Transaction>
+    <Transaction>2022/09/22 00:19:08.000.520,D:\Controla\Unit1.dfm=D:\Controla\UfrmRelProdSecaoPrint.dfm</Transaction>
+  </Transactions>
+</BorlandProject>

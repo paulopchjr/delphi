@@ -1,0 +1,82 @@
+unit uTeste;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Grids, Vcl.StdCtrls;
+
+type
+  TForm1 = class(TForm)
+    Button1: TButton;
+    StringGrid1: TStringGrid;
+    procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
+      var CanSelect: Boolean);
+
+
+
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+uses uFrmCadastroProdutos;
+
+procedure TForm1.StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
+  var CanSelect: Boolean);
+
+  var
+  coluna: Integer;
+  linha: Integer;
+  codigo: String;
+  descricao: String;
+  precocusto: String;
+  precovenda: string;
+  prod, secao: string;
+
+begin
+   linha := ARow;
+  coluna := ACol;
+
+  prod := StringGridProd.Cells[coluna, linha];
+
+  with frmDm.tb_produtos do
+  begin
+    close;
+    Sql.Clear;
+    Sql.Add(' SELECT DISTINCT P.CODIGO, P.DESCRICAO, VALOR_CUSTO, ');
+    Sql.Add(' VALOR_VENDA, S.SECAO FROM PRODUTOS AS P ');
+    Sql.Add(' LEFT JOIN SECOES AS S ');
+    Sql.Add(' ON S.CODIGO = P.CODIGO_SECAO');
+    Sql.Add(' WHERE P.DESCRICAO = ' + QuotedStr(prod));
+
+    Open;
+    First;
+
+    if not(Eof) then
+    begin
+      codigo := FieldByName('CODIGO').AsString;
+      descricao := FieldByName('DESCRICAO').AsString;
+      precocusto := FieldByName('VALOR_CUSTO').AsString;
+      precovenda := FieldByName('VALOR_VENDA').AsString;
+      secao := FieldByName('SECAO').AsString;
+      Next;
+    end;
+
+    edtCodigoProduto.Text := codigo;
+    edtProDescricao.Text := descricao;
+    edtProdPrecoCusto.Text := precocusto;
+    edtProdPrecoVenda.Text := precovenda;
+    CbxProdutoSecao.Text := secao;
+end;
+
+end.

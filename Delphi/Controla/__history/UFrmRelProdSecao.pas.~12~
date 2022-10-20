@@ -1,0 +1,211 @@
+unit UFrmRelProdSecao;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UfrmRelPadrao, Vcl.Grids, Vcl.StdCtrls,
+  Vcl.ExtCtrls;
+
+type
+  TfrmRelProdSecao = class(TfrmRel)
+    Label2: TLabel;
+    edtCodFinal: TEdit;
+    Label3: TLabel;
+    edtCodInicio: TEdit;
+    procedure btnvisualizarClick(Sender: TObject);
+    procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
+      var CanSelect: Boolean);
+    procedure btnImprmirClick(Sender: TObject);
+  private
+    { Private declarations }
+    procedure carrgaDados;
+  public
+    { Public declarations }
+  end;
+
+var
+  frmRelProdSecao: TfrmRelProdSecao;
+
+implementation
+
+{$R *.dfm}
+
+uses uFrmDM, UfrmRelProdSecaoPrint;
+
+procedure TfrmRelProdSecao.btnImprmirClick(Sender: TObject);
+begin
+  inherited;
+  frmProdSecaoPrint := TfrmProdSecaoPrint.Create(Self);
+
+  with frmProdSecaoPrint do
+  begin
+    RLLabel2.Caption := 'Código:' + edtCodInicio.Text + ' até  Codigo: ' +
+      edtCodFinal.Text;
+
+  end;
+
+  frmProdSecaoPrint.RLReportProSecao.Preview();
+end;
+
+procedure TfrmRelProdSecao.btnvisualizarClick(Sender: TObject);
+begin
+  inherited;
+  if ((edtCodInicio.Text = '') and (edtCodFinal.Text = '')) then
+  begin
+    ShowMessage('Informe os Código Inicial e final');
+  end
+  else
+  begin
+    carrgaDados;
+    btnImprmir.Enabled := true;
+  end;
+end;
+
+procedure TfrmRelProdSecao.carrgaDados;
+
+var
+  coluna, linha, resultado, inicio, finali: Integer;
+  codigo, descricao, valorcusto, valorvenda, margem, codigosecao, secao: String;
+begin
+
+  coluna := 0;
+  linha := 0;
+
+  with frmDm.FDStoredProc1 do
+  begin
+
+    inicio := StrToInt(edtCodInicio.Text);
+    finali := StrToInt(edtCodFinal.Text);
+
+    if (finali < inicio) then
+    begin
+      ShowMessage
+        ('Não é possivel fazer essa operação, Codigo final é menor que Inicial');
+      edtCodFinal.Text := '';
+      edtCodInicio.Text := '';
+      edtCodInicio.SetFocus;
+    end
+    else
+    begin
+      Active := false;
+      StoredProcName := 'DADOS_PRODUTOS';
+      Prepare;
+      ParamByName('CODIGO_INICIAL').AsInteger := StrToInt(edtCodInicio.Text);
+      ParamByName('CODIGO_FINAL').AsInteger := StrToInt(edtCodFinal.Text);
+
+      Active := true;
+
+      for coluna := 0 to 7 do
+      begin
+        if ((coluna = 0) and (linha = 0)) then
+        begin
+          StringGrid1.Cells[coluna, linha] := 'CODIGO';
+          StringGrid1.ColWidths[coluna] := 100;
+        end;
+        if ((coluna = 1) and (linha = 0)) then
+        begin
+          StringGrid1.Cells[coluna, linha] := 'DESCRIÇÃO';
+          StringGrid1.ColWidths[coluna] := 150;
+
+        end;
+
+        if ((coluna = 2) and (linha = 0)) then
+        begin
+          StringGrid1.Cells[coluna, linha] := 'VALOR DE CUSTO';
+          StringGrid1.ColWidths[coluna] := 100;
+        end;
+
+        if ((coluna = 3) and (linha = 0)) then
+        begin
+          StringGrid1.Cells[coluna, linha] := 'VALOR DE VENDA';
+          StringGrid1.ColWidths[coluna] := 100;
+        end;
+
+        if ((coluna = 4) and (linha = 0)) then
+        begin
+          StringGrid1.Cells[coluna, linha] := 'MARGEM';
+          StringGrid1.ColWidths[coluna] := 90;
+        end;
+
+        if ((coluna = 5) and (linha = 0)) then
+        begin
+          StringGrid1.Cells[coluna, linha] := 'CODIGO SECÃO';
+          StringGrid1.ColWidths[coluna] := 90;
+        end;
+
+        if ((coluna = 6) and (linha = 0)) then
+        begin
+          StringGrid1.Cells[coluna, linha] := 'SECÃO';
+          StringGrid1.ColWidths[coluna] := 90;
+        end;
+      end;
+
+      resultado := RecordCount;
+      StringGrid1.RowCount := StringGrid1.RowCount + resultado;
+      linha := 1;
+
+      for linha := 1 to resultado do
+
+      begin
+        coluna := 0;
+        codigo := IntToStr(FindField('CODIGO').AsInteger);
+        descricao := FindField('DESCRICAO').AsString;
+        valorcusto := FindField('VALOR_DE_CUSTO').AsString;
+        valorvenda := FindField('VALOR_DE_VENDA').AsString;
+        margem := IntToStr(FindField('MARGEM').AsInteger);
+        codigosecao := FindField('CODIGO_SECAO').AsString;
+        secao := FindField('SECAO').AsString;
+
+        if (coluna = 0) then
+        begin
+          StringGrid1.Cells[coluna, linha] := codigo;
+
+        end;
+        coluna := coluna + 1;
+        if (coluna = 1) then
+        begin
+          StringGrid1.Cells[coluna, linha] := descricao;
+        end;
+        coluna := coluna + 1;
+
+        if (coluna = 2) then
+        begin
+          StringGrid1.Cells[coluna, linha] := 'R$ ' + valorcusto;
+        end;
+        coluna := coluna + 1;
+
+        if (coluna = 3) then
+        begin
+          StringGrid1.Cells[coluna, linha] := 'R$ ' + valorvenda;
+        end;
+        coluna := coluna + 1;
+
+        if (coluna = 4) then
+        begin
+          StringGrid1.Cells[coluna, linha] := margem + '%';
+        end;
+        coluna := coluna + 1;
+
+        if (coluna = 5) then
+        begin
+          StringGrid1.Cells[coluna, linha] := codigosecao;
+        end;
+        coluna := coluna + 1;
+
+        if (coluna = 6) then
+        begin
+          StringGrid1.Cells[coluna, linha] := secao;
+        end;
+        coluna := coluna + 1;
+
+        Next;
+      end;
+    end
+
+  end;
+
+end;
+
+end.

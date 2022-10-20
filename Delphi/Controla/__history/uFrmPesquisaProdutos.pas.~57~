@@ -1,0 +1,186 @@
+unit uFrmPesquisaProdutos;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uFrmPesquisaPadrao, Vcl.StdCtrls,
+  Vcl.ExtCtrls;
+
+type
+  TfrmPesquisaProdutos = class(TfrmPesquisaPadrao)
+    edtcod: TEdit;
+    edtdesc: TEdit;
+    edtpc: TEdit;
+    edtpv: TEdit;
+    cbxse: TComboBox;
+    procedure btn_buscarClick(Sender: TObject);
+    procedure Edit1Change(Sender: TObject);
+    procedure ListBox1DblClick(Sender: TObject);
+  private
+    { Private declarations }
+    procedure buscarProdutosPorDescricao;
+    procedure buscarTodosProdutos;
+
+  public
+    { Public declarations }
+  end;
+
+var
+  frmPesquisaProdutos: TfrmPesquisaProdutos;
+
+implementation
+
+{$R *.dfm}
+
+uses uFrmDM, uFrmCadastroProdutos;
+
+procedure TfrmPesquisaProdutos.btn_buscarClick(Sender: TObject);
+var
+  clique: integer;
+begin
+  inherited;
+  clique := 0;
+  while clique = 0 do
+  begin
+    if (Edit1.Text <> '') then
+    begin
+      buscarProdutosPorDescricao;
+    end
+    else
+    begin
+      buscarTodosProdutos;
+    end;
+
+    clique := 1;
+  end;
+
+end;
+
+procedure TfrmPesquisaProdutos.buscarProdutosPorDescricao;
+begin
+
+  with frmDm.tb_produtos do
+  begin
+    Close;
+    Sql.Clear;
+    Sql.Add(' SELECT DISTINCT P.CODIGO, P.DESCRICAO, P.PRECOCUSTO, ');
+    Sql.Add(' P.PRECOVENDA, S.SECAO FROM PRODUTOS AS P ');
+    Sql.Add(' LEFT JOIN SECOES AS S ');
+    Sql.Add(' ON S.CODIGO = P.CODIGO_SECAO');
+    Sql.Add(' WHERE P.DESCRICAO LIKE ' + QuotedStr(('%' + Edit1.Text + '%')));
+    Sql.Add(' ORDER BY CODIGO  ASC');
+    Open;
+    First;
+
+    while not(Eof) do
+    begin
+      ListBox1.Items.Add('    ' + frmDm.tb_produtos.FieldByName('CODIGO')
+        .AsString + '    ' + frmDm.tb_produtos.FieldByName('DESCRICAO').AsString
+        + '    ' + frmDm.tb_produtos.FieldByName('PRECOCUSTO').AsString + '    '
+        + frmDm.tb_produtos.FieldByName('PRECOVENDA').AsString + '   ' +
+        frmDm.tb_produtos.FieldByName('SECAO').AsString
+
+        );
+
+      Next;
+    end;
+
+  end;
+end;
+
+procedure TfrmPesquisaProdutos.buscarTodosProdutos;
+begin
+  with frmDm.tb_produtos do
+  begin
+    Close;
+    Sql.Clear;
+    Sql.Add(' SELECT P.CODIGO, P.DESCRICAO, P.PRECOCUSTO,');
+    Sql.Add(' P.PRECOVENDA, S.SECAO FROM PRODUTOS AS P');
+    Sql.Add(' LEFT JOIN SECOES AS S ');
+    Sql.Add(' ON S.CODIGO = P.CODIGO_SECAO ');
+    Sql.Add(' ORDER BY P.CODIGO ASC ');
+    Open;
+    First;
+
+    while not(Eof) do
+    begin
+      ListBox1.Items.Add('    ' + frmDm.tb_produtos.FieldByName('CODIGO')
+        .AsString + '    ' + frmDm.tb_produtos.FieldByName('DESCRICAO').AsString
+        + '    ' + frmDm.tb_produtos.FieldByName('PRECOCUSTO').AsString + '    '
+        + frmDm.tb_produtos.FieldByName('PRECOVENDA').AsString + '   ' +
+        frmDm.tb_produtos.FieldByName('SECAO').AsString
+
+        );
+      Next;
+    end;
+
+  end;
+end;
+
+procedure TfrmPesquisaProdutos.Edit1Change(Sender: TObject);
+
+begin
+  inherited;
+
+  if (Edit1.Text = '') then
+  begin
+
+    ListBox1.Items.Clear;
+    ListBox1.Items.Add('CODIGO | DESCRICAO | PRECOCUSTO | PRECOVENDA | SECAO');
+  end
+  else
+  begin
+
+    buscarProdutosPorDescricao;
+  end;
+
+end;
+
+procedure TfrmPesquisaProdutos.ListBox1DblClick(Sender: TObject);
+var
+  vlrIndex: integer;
+begin
+  inherited;
+  // ATRIBUINDO O VALOR INDEX NO LISTBOX A VARIAVEL DE CONTROLE
+  vlrIndex := ListBox1.ItemIndex;
+
+  // VERIFCANDO SE O INDEX ESTÁ NA POSICAO 0 , QUE É A PRIMEIRA POSICAO DO INDEX ,
+  // NO CASO O CABEÇALHO
+  if vlrIndex = 0 then
+  begin
+    exit;
+  end;
+
+  // ENQUANTO TIVER NA TABELA PRODUTO, FAÇA
+  with frmDm.tb_produtos do
+  begin
+    Close;
+    Sql.Clear;
+
+    // PEGANDO A POSICAO DO INDEX NA LISTBOX, O PRODUTO QUE FOI SELECIONADO
+    Sql.Add('SELECT P.CODIGO, P.DESCRICAO, P.PRECOCUSTO, P.PRECOVENDA, S.SECAO ');
+    Sql.Add(' FROM PRODUTOS AS P ');
+    Sql.Add(' LEFT JOIN SECOES AS S ');
+    Sql.Add(' ON S.CODIGO = P.CODIGO_SECAO');
+    Sql.Add(' WHERE P.CODIGO =' + IntToStr(vlrIndex));
+    Open;
+    // PEGANDO O PRODUTO QUE FOI FILTRADO E COLOCANDO NOS CAMPOS DO,
+    // FORMULARIO PESQUISA, PARA DEPOIS SEREM ENVIADOS PARA O FORMULARIO CADASTRO
+    edtcod.Text := Fields[0].AsString;
+    edtdesc.Text := Fields[1].AsString;
+    edtpc.Text := Fields[2].AsString;
+    edtpv.Text := Fields[3].AsString;
+    cbxse.Text := Fields[4].AsString;
+  end;
+
+  frmPesquisaProdutos.Close;
+  // ATRIBUINDO OS VALORES PARA O CADASTRO DE PRODUTOS
+  with frmCadastroProdutos do
+  begin
+    // edtCodigoProduto.text:= edtcod.text;
+  end;
+end;
+
+end.

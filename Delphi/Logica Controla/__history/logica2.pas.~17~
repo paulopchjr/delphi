@@ -1,0 +1,262 @@
+unit logica2;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Grids;
+
+type
+  TForm2 = class(TForm)
+    StringGrid1: TStringGrid;
+    Panel1: TPanel;
+    Button1: TButton;
+    Button2: TButton;
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form2: TForm2;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm2.Button1Click(Sender: TObject);
+
+var
+  arrayStrings: array [1 .. 10, 1 .. 10] of String;
+  i, j: integer;
+  text: string;
+begin
+
+  try
+    for i := 1 to Length(arrayStrings) do
+    begin
+      for j := 1 to Length(arrayStrings) do
+      begin
+        case i of
+          1:
+            begin
+              if (j = 1) then
+              begin
+                arrayStrings[i][j] := '';
+              end
+              else
+              begin
+                arrayStrings[i][j] := IntToStr(j - 1);
+                // segunda posicao em diante
+              end;
+            end;
+          2:
+            begin
+              if (j = 1) then
+              begin
+                arrayStrings[i][j] := IntToStr(j);
+              end
+              else if (j = 2) then
+              begin
+                arrayStrings[i][j] := 'x';
+              end
+              else
+              begin
+                arrayStrings[i][j] := '';
+              end;
+
+            end;
+          3:
+            begin
+              if (j = 1) then
+              begin
+                arrayStrings[i][j] := IntToStr(j);
+              end
+              else if (j = 3) then
+              begin
+                arrayStrings[i][j] := 'x';
+              end
+              else
+              begin
+                arrayStrings[i][j] := '';
+              end;
+
+            end;
+          4:
+            begin
+              if (j = 1) then
+              begin
+                arrayStrings[i][j] := IntToStr(j);
+              end
+              else if (j = 4) then
+              begin
+                arrayStrings[i][j] := 'x';
+              end
+              else
+              begin
+                arrayStrings[i][j] := '';
+              end;
+
+            end;
+          5:
+            begin
+              if (j = 1) then
+              begin
+                arrayStrings[i][j] := IntToStr(j);
+              end
+              else if (j = 5) then
+              begin
+                arrayStrings[i][j] := 'x';
+              end
+              else
+              begin
+                arrayStrings[i][j] := '';
+              end;
+
+            end;
+
+          6:
+            begin
+              if (j = 1) then
+              begin
+                arrayStrings[i][j] := IntToStr(j);
+              end
+              else if (j = 6) then
+              begin
+                arrayStrings[i][j] := 'x';
+              end
+              else
+              begin
+                arrayStrings[i][j] := '';
+              end;
+
+            end;
+
+          7:
+            begin
+              if (j = 1) then
+              begin
+                arrayStrings[i][j] := IntToStr(j);
+              end
+              else if (j = 7) then
+              begin
+                arrayStrings[i][j] := 'x';
+              end
+              else
+              begin
+                arrayStrings[i][j] := '';
+              end;
+
+            end;
+
+          8:
+            begin
+              if (j = 1) then
+              begin
+                arrayStrings[i][j] := IntToStr(j);
+              end
+              else if (j = 8) then
+              begin
+                arrayStrings[i][j] := 'x';
+              end
+              else
+              begin
+                arrayStrings[i][j] := '';
+              end;
+
+            end;
+
+          9:
+            begin
+              if (j = 1) then
+              begin
+                arrayStrings[i][j] := IntToStr(j);
+              end
+              else if (j = 9) then
+              begin
+                arrayStrings[i][j] := 'x';
+              end
+              else
+              begin
+                arrayStrings[i][j] := '';
+              end;
+
+            end;
+
+          10:
+            begin
+              if (j <> i) then
+              begin
+                arrayStrings[i][j] := IntToStr(j);
+              end
+              else if (j = i) then
+              begin
+                arrayStrings[i][j] := 'x';
+              end
+              else
+              begin
+                arrayStrings[i][j] := '';
+              end;
+
+            end;
+        end;
+      end;
+
+    end;
+
+  except
+    ShowMessage('erro no array');
+
+  end;
+
+  for i := 1 to Length(arrayStrings) do
+  begin
+    for j := 1 to Length(arrayStrings[j]) do
+    begin
+
+      StringGrid1.Cells[j, i] := arrayStrings[i][j];
+
+    end;
+  end;
+end;
+
+procedure TForm2.Button2Click(Sender: TObject);
+
+var
+  arrayStrings: array [1 .. 10, 1 .. 10] of String;
+  i, j: integer;
+  text: string;
+begin
+  for i := 1 to Length(arrayStrings) do
+  begin
+    for j := 1 to Length(arrayStrings) do
+    begin
+
+      if i = j then
+      begin
+        arrayStrings[i][j] := '';
+      end
+
+      else
+      begin
+        arrayStrings[i][j] := IntToStr(j - 1);
+      end;
+
+      if i > j then
+      begin
+        if i > j then
+        begin
+          arrayStrings[i][j] := IntToStr(j)
+        end
+
+      end
+
+    end;
+  end;
+end;
+
+end.

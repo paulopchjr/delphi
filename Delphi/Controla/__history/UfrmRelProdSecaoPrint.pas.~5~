@@ -1,0 +1,27 @@
+unit UfrmRelProdSecaoPrint;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, RLReport, Vcl.StdCtrls;
+
+type
+  TfrmProdSecaoPrint = class(TForm)
+    RLReportProSecao: TRLReport;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmProdSecaoPrint: TfrmProdSecaoPrint;
+
+implementation
+
+{$R *.dfm}
+
+uses uFrmDM;
+
+end.

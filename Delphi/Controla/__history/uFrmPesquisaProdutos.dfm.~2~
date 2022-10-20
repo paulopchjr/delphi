@@ -1,0 +1,49 @@
+inherited frmPesquisaProdutos: TfrmPesquisaProdutos
+  Caption = 'Pesquisa Produtos'
+  TextHeight = 15
+  inherited Label2: TLabel
+    Width = 234
+    Caption = 'Buscar Por   Produtos'
+    ExplicitWidth = 234
+  end
+  object edtcod: TEdit
+    Left = 104
+    Top = 296
+    Width = 121
+    Height = 23
+    Enabled = False
+    TabOrder = 5
+  end
+  object edtdesc: TEdit
+    Left = 104
+    Top = 325
+    Width = 121
+    Height = 23
+    Enabled = False
+    TabOrder = 6
+  end
+  object edtpc: TEdit
+    Left = 104
+    Top = 354
+    Width = 121
+    Height = 23
+    Enabled = False
+    TabOrder = 7
+  end
+  object edtpv: TEdit
+    Left = 104
+    Top = 383
+    Width = 121
+    Height = 23
+    Enabled = False
+    TabOrder = 8
+  end
+  object cbxse: TComboBox
+    Left = 272
+    Top = 295
+    Width = 145
+    Height = 23
+    Enabled = False
+    TabOrder = 9
+  end
+end

@@ -1,0 +1,125 @@
+inherited frmRelProdSecao: TfrmRelProdSecao
+  Caption = 'frmRelProdSecao'
+  ClientWidth = 876
+  ExplicitWidth = 892
+  TextHeight = 15
+  inherited Panel1: TPanel
+    Width = 876
+    ExplicitWidth = 876
+    inherited Label1: TLabel
+      Width = 358
+      Caption = 'Rel'#225'torio de Produtos Por Se'#231#227'o '
+      ExplicitWidth = 358
+    end
+  end
+  inherited Panel2: TPanel
+    Width = 876
+    Height = 56
+    ExplicitWidth = 876
+    ExplicitHeight = 56
+    object Label2: TLabel [0]
+      Left = 16
+      Top = 14
+      Width = 125
+      Height = 25
+      Alignment = taCenter
+      Caption = 'C'#243'digo '#205'nicial :'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label3: TLabel [1]
+      Left = 296
+      Top = 14
+      Width = 115
+      Height = 25
+      Alignment = taCenter
+      Caption = 'C'#243'digo Final :'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    inherited Sair: TButton
+      Left = 764
+      Height = 35
+      Font.Charset = ANSI_CHARSET
+      Font.Height = -13
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+      ExplicitLeft = 764
+      ExplicitHeight = 35
+    end
+    inherited btnvisualizar: TButton
+      Left = 578
+      Height = 35
+      Font.Charset = ANSI_CHARSET
+      Font.Height = -13
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold, fsItalic]
+      ParentFont = False
+      OnClick = btnvisualizarClick
+      ExplicitLeft = 578
+      ExplicitHeight = 35
+    end
+    inherited btnImprmir: TButton
+      Left = 659
+      Height = 35
+      Enabled = False
+      Font.Charset = ANSI_CHARSET
+      Font.Height = -13
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+      OnClick = btnImprmirClick
+      ExplicitLeft = 659
+      ExplicitHeight = 35
+    end
+    object edtCodFinal: TEdit
+      Left = 417
+      Top = 6
+      Width = 121
+      Height = 33
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 3
+    end
+    object edtCodInicio: TEdit
+      Left = 155
+      Top = 6
+      Width = 121
+      Height = 33
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 4
+    end
+  end
+  inherited StringGrid1: TStringGrid
+    Top = 113
+    Width = 876
+    Height = 328
+    ColCount = 7
+    RowCount = 1
+    FixedRows = 0
+    OnSelectCell = StringGrid1SelectCell
+    ExplicitTop = 113
+    ExplicitWidth = 876
+    ExplicitHeight = 328
+    RowHeights = (
+      24)
+  end
+end

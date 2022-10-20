@@ -1,0 +1,204 @@
+unit uFrmProdutosPorSecao;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Grids;
+
+type
+  TfrmProdSecao = class(TForm)
+    Panel1: TPanel;
+    Label1: TLabel;
+    Label2: TLabel;
+    btn_buscar: TButton;
+    cbxSecao: TComboBox;
+    SGProdSecao: TStringGrid;
+    procedure ListBox1Click(Sender: TObject);
+    procedure btn_buscarClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure validaCbx;
+    procedure limpaTabela;
+  private
+    { Private declarations }
+    function buscarSecao(): string;
+  public
+    { Public declarations }
+  end;
+
+var
+  frmProdSecao: TfrmProdSecao;
+
+implementation
+
+{$R *.dfm}
+
+uses uFrmDM;
+
+procedure TfrmProdSecao.btn_buscarClick(Sender: TObject);
+begin
+
+  if cbxSecao.Text = '' then
+  begin
+    ShowMessage('Selecione uma Seção para ser consultada');
+
+  end
+  else
+  begin
+    limpaTabela;
+    buscarSecao;
+  end;
+end;
+
+function TfrmProdSecao.buscarSecao: string;
+var
+
+  coluna: Integer;
+  linha: Integer;
+  codigo: String;
+  descricao: String;
+  precocusto: String;
+  precovenda: string;
+
+begin
+
+  coluna := 0;
+  linha := 0;
+  with frmDm.tb_produtos do
+  begin
+    Close;
+    SQL.Clear;
+    SQL.Add('SELECT P.CODIGO, P.DESCRICAO, P.VALOR_CUSTO, P.VALOR_VENDA FROM SECOES AS S ');
+    SQL.Add('  LEFT JOIN PRODUTOS AS P ON P.CODIGO_SECAO = S.CODIGO ');
+    SQL.Add('  WHERE S.SECAO = :desc ORDER BY P.DESCRICAO ASC');
+    ParamByName('desc').AsString := cbxSecao.Text;
+    Open;
+    First;
+
+    while not(Eof) do
+    begin
+      for coluna := 0 to 3 do
+      begin
+
+        if ((coluna = 0) and (linha = 0)) then
+        begin
+          SGProdSecao.Cells[coluna, linha] := 'CÓDIGO';
+          SGProdSecao.ColWidths[coluna] := 90;
+        end;
+        if ((coluna = 1) and (linha = 0)) then
+        begin
+          SGProdSecao.Cells[coluna, linha] := 'DESCRIÇÃO';
+          SGProdSecao.ColWidths[coluna] := 120;
+        end;
+
+        if ((coluna = 2) and (linha = 0)) then
+        begin
+          SGProdSecao.Cells[coluna, linha] := 'VALOR CUSTO';
+          SGProdSecao.ColWidths[coluna] := 100;
+        end;
+        if ((coluna = 3) and (linha = 0)) then
+        begin
+          SGProdSecao.Cells[coluna, linha] := 'VALOR VENDA';
+          SGProdSecao.ColWidths[coluna] := 100;
+
+        end;
+      end;
+      linha := 1;
+      while not(Eof) do
+      begin
+        coluna := 0;
+
+        codigo := FieldByName('CODIGO').AsString;
+        descricao := FieldByName('DESCRICAO').AsString;
+        precocusto := FieldByName('VALOR_CUSTO').AsString;
+        precovenda := FieldByName('VALOR_VENDA').AsString;
+
+        if (coluna = 0) then
+        begin
+          SGProdSecao.Cells[coluna, linha] := codigo;
+        end;
+        coluna := coluna + 1;
+
+        if (coluna = 1) then
+        begin
+          SGProdSecao.Cells[coluna, linha] := descricao;
+        end;
+        coluna := coluna + 1;
+
+        if (coluna = 2) then
+        begin
+          SGProdSecao.Cells[coluna, linha] := 'R$ ' + precocusto;
+        end;
+        coluna := coluna + 1;
+
+        if (coluna = 3) then
+        begin
+          SGProdSecao.Cells[coluna, linha] := 'R$ ' + precovenda;
+        end;
+        coluna := coluna + 1;
+
+        SGProdSecao.RowCOUNT + 1;
+
+        Next;
+      end;
+
+    end;
+
+  end;
+
+end;
+
+procedure TfrmProdSecao.FormCreate(Sender: TObject);
+begin
+  with frmDm.tb_secao do
+  begin
+    Close;
+    SQL.Clear;
+    SQL.Text := 'SELECT * FROM SECOES ORDER BY SECAO ASC ';
+    Open;
+    First;
+
+    while not(Eof) do
+    begin
+      cbxSecao.Items.Add(FieldByName('SECAO').AsString);
+      Next;
+
+    end;
+
+    cbxSecao.ItemIndex := -1;
+  end;
+end;
+
+procedure TfrmProdSecao.limpaTabela;
+var
+  coluna, linha: Integer;
+
+begin
+  with SGProdSecao do
+  begin
+    for coluna := 0 to ColCount - 1 do
+    begin
+      for linha := 0 to RowCount - 1 do
+        Cells[coluna, linha] := '';
+
+    end;
+  end;
+end;
+
+procedure TfrmProdSecao.ListBox1Click(Sender: TObject);
+var
+  I: Integer;
+begin
+
+end;
+
+procedure TfrmProdSecao.validaCbx;
+begin
+  if cbxSecao.Text = '' then
+  begin
+    ShowMessage('Selecione uma Seção para ser consultada');
+  end;
+end;
+
+end.

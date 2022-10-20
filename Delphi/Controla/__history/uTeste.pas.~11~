@@ -1,0 +1,186 @@
+unit uTeste;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Grids, Vcl.StdCtrls;
+
+type
+  Tfrmteste = class(TForm)
+    Button1: TButton;
+    StringGrid1: TStringGrid;
+    procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
+      var CanSelect: Boolean);
+    procedure Button1Click(Sender: TObject);
+
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmteste: Tfrmteste;
+
+implementation
+
+{$R *.dfm}
+
+uses uFrmCadastroProdutos;
+
+procedure Tfrmteste.Button1Click(Sender: TObject);
+
+var
+  coluna: Integer;
+  linha: Integer;
+  codigo: String;
+  descricao: String;
+  precocusto: String;
+  precovenda: string;
+  secao: string;
+begin
+  linha := 0;
+  coluna := 0;
+
+  with frmDm.tb_produtos do
+  begin
+    close;
+    Sql.Clear;
+    Sql.Add(' SELECT P.CODIGO, P.DESCRICAO, P.VALOR_CUSTO,');
+    Sql.Add(' P.VALOR_VENDA, S.SECAO FROM PRODUTOS AS P');
+    Sql.Add(' LEFT JOIN SECOES AS S ');
+    Sql.Add(' ON S.CODIGO = P.CODIGO_SECAO ');
+    Sql.Add(' ORDER BY P.DESCRICAO ASC ');
+    Open;
+    First;
+    for coluna := 0 to 5 do
+    begin
+      if ((coluna = 0) and (linha = 0)) then
+      begin
+        StringGridProd.Cells[coluna, linha] := 'CODIGO';
+        StringGridProd.ColWidths[coluna] := 100;
+      end;
+      if ((coluna = 1) and (linha = 0)) then
+      begin
+        StringGridProd.Cells[coluna, linha] := 'DESCRIÇÃO';
+        StringGridProd.ColWidths[coluna] := 100;
+
+      end;
+
+      if ((coluna = 2) and (linha = 0)) then
+      begin
+        StringGridProd.Cells[coluna, linha] := 'PREÇO.CUSTO';
+        StringGridProd.ColWidths[coluna] := 100;
+      end;
+
+      if ((coluna = 3) and (linha = 0)) then
+      begin
+        StringGridProd.Cells[coluna, linha] := 'PREÇO.VENDA';
+        StringGridProd.ColWidths[coluna] := 100;
+      end;
+
+      if ((coluna = 4) and (linha = 0)) then
+      begin
+        StringGridProd.Cells[coluna, linha] := 'SEÇÃO';
+        StringGridProd.ColWidths[coluna] := 90;
+      end;
+    end;
+
+    linha := 1;
+    while not(Eof) do
+    begin
+      coluna := 0;
+
+      codigo := FieldByName('CODIGO').AsString;
+      descricao := FieldByName('DESCRICAO').AsString;
+      precocusto := FieldByName('VALOR_CUSTO').AsString;
+      precovenda := FieldByName('VALOR_VENDA').AsString;
+      secao := FieldByName('SECAO').AsString;
+      if (coluna = 0) then
+      begin
+        StringGridProd.Cells[coluna, linha] := codigo;
+      end;
+      coluna := coluna + 1;
+
+      if (coluna = 1) then
+      begin
+        StringGridProd.Cells[coluna, linha] := descricao;
+      end;
+      coluna := coluna + 1;
+
+      if (coluna = 2) then
+      begin
+        StringGridProd.Cells[coluna, linha] := 'R$ ' + precocusto;
+      end;
+      coluna := coluna + 1;
+
+      if (coluna = 3) then
+      begin
+        StringGridProd.Cells[coluna, linha] := 'R$ ' + precovenda;
+      end;
+      coluna := coluna + 1;
+
+      if (coluna = 4) then
+      begin
+        StringGridProd.Cells[coluna, linha] := secao;
+      end;
+
+      linha := linha + 1;
+
+      Next;
+    end;
+    btn_ant.Enabled := false;
+  end;
+end;
+
+procedure Tfrmteste.StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
+  var CanSelect: Boolean);
+
+var
+  coluna: Integer;
+  linha: Integer;
+  codigo: String;
+  descricao: String;
+  precocusto: String;
+  precovenda: string;
+  prod, secao: string;
+
+begin
+  linha := ARow;
+  coluna := ACol;
+
+  prod := StringGridProd.Cells[coluna, linha];
+
+  with frmDm.tb_produtos do
+  begin
+    close;
+    Sql.Clear;
+    Sql.Add(' SELECT DISTINCT P.CODIGO, P.DESCRICAO, VALOR_CUSTO, ');
+    Sql.Add(' VALOR_VENDA, S.SECAO FROM PRODUTOS AS P ');
+    Sql.Add(' LEFT JOIN SECOES AS S ');
+    Sql.Add(' ON S.CODIGO = P.CODIGO_SECAO');
+    Sql.Add(' WHERE P.DESCRICAO = ' + QuotedStr(prod));
+
+    Open;
+    First;
+
+    if not(Eof) then
+    begin
+      codigo := FieldByName('CODIGO').AsString;
+      descricao := FieldByName('DESCRICAO').AsString;
+      precocusto := FieldByName('VALOR_CUSTO').AsString;
+      precovenda := FieldByName('VALOR_VENDA').AsString;
+      secao := FieldByName('SECAO').AsString;
+      Next;
+    end;
+
+    edtCodigoProduto.Text := codigo;
+    edtProDescricao.Text := descricao;
+    edtProdPrecoCusto.Text := precocusto;
+    edtProdPrecoVenda.Text := precovenda;
+    CbxProdutoSecao.Text := secao;
+  end;
+
+end.

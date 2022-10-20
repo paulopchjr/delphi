@@ -1,0 +1,103 @@
+object frmDm: TfrmDm
+  Height = 480
+  Width = 640
+  object Conexao: TFDConnection
+    Params.Strings = (
+      'Database=D:\Controla\Win32\Debug\CONTROLA.FDB'
+      'User_Name=SYSDBA'
+      'Password=masterkey'
+      'Server=localhost'
+      'Port=3050'
+      'DriverID=FB')
+    Connected = True
+    LoginPrompt = False
+    Left = 104
+    Top = 88
+  end
+  object tb_produtos: TFDQuery
+    Connection = Conexao
+    SQL.Strings = (
+      'SELECT *  FROM PRODUTOS')
+    Left = 296
+    Top = 96
+  end
+  object tb_secao: TFDQuery
+    Connection = Conexao
+    SQL.Strings = (
+      'SELECT  *  FROM SECOES'
+      ' ')
+    Left = 200
+    Top = 96
+  end
+  object FDStoredProc1: TFDStoredProc
+    Active = True
+    DetailFields = 
+      'CODIGO;CODIGO_SECAO;DESCRICAO;MARGEM;SECAO;VALOR_DE_CUSTO;VALOR_' +
+      'DE_VENDA'
+    Connection = Conexao
+    StoredProcName = 'DADOS_PRODUTOS'
+    Left = 400
+    Top = 80
+    ParamData = <
+      item
+        Position = 1
+        Name = 'CODIGO_INICIAL'
+        DataType = ftInteger
+        ParamType = ptInput
+      end
+      item
+        Position = 2
+        Name = 'CODIGO_FINAL'
+        DataType = ftInteger
+        ParamType = ptInput
+      end
+      item
+        Position = 3
+        Name = 'CODIGO'
+        DataType = ftInteger
+        ParamType = ptOutput
+      end
+      item
+        Position = 4
+        Name = 'DESCRICAO'
+        DataType = ftString
+        ParamType = ptOutput
+        Size = 50
+      end
+      item
+        Position = 5
+        Name = 'VALOR_DE_CUSTO'
+        DataType = ftBCD
+        Precision = 8
+        NumericScale = 2
+        ParamType = ptOutput
+      end
+      item
+        Position = 6
+        Name = 'VALOR_DE_VENDA'
+        DataType = ftBCD
+        Precision = 8
+        NumericScale = 2
+        ParamType = ptOutput
+      end
+      item
+        Position = 7
+        Name = 'CODIGO_SECAO'
+        DataType = ftInteger
+        ParamType = ptOutput
+      end
+      item
+        Position = 8
+        Name = 'SECAO'
+        DataType = ftString
+        ParamType = ptOutput
+        Size = 30
+      end
+      item
+        Position = 9
+        Name = 'MARGEM'
+        DataType = ftInteger
+        ParamType = ptOutput
+      end>
+  end
+end

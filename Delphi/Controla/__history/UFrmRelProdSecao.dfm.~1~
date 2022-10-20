@@ -1,0 +1,4 @@
+inherited frmRel1: TfrmRel1
+  Caption = 'frmRel1'
+  TextHeight = 15
+end

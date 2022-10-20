@@ -1,0 +1,447 @@
+unit UPrincipal;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Grids;
+
+type
+  TForm1 = class(TForm)
+    Button1: TButton;
+    Label1: TLabel;
+    StringGrid1: TStringGrid;
+    procedure Button1Click(Sender: TObject);
+
+  private
+    { Private declarations }
+
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+{ TForm1 }
+
+procedure TForm1.Button1Click(Sender: TObject);
+var
+  arrayStrings: array [1 .. 14, 1 .. 11] of String;
+  i, j: integer;
+  teste :string;
+begin
+  try
+    for i := 0 to Length(arrayStrings) do
+    begin
+      for j := 0 to Length(arrayStrings[i]) do
+      begin
+         case i of
+            1: begin
+               case j of
+                     1: begin arrayStrings[i][j]:= '' end;
+                     2: begin arrayStrings[i][j]:= '1' end;
+                     3: begin arrayStrings[i][j]:= '2' end;
+                     4: begin arrayStrings[i][j]:= '3' end;
+                     5: begin arrayStrings[i][j]:= '4' end;
+                     6: begin arrayStrings[i][j]:= '5' end;
+                     7: begin arrayStrings[i][j]:= '6' end;
+                     8: begin arrayStrings[i][j]:= '7' end;
+                     9: begin arrayStrings[i][j]:= '8' end;
+                     10:begin arrayStrings[i][j]:= '9' end;
+               end;
+            end;
+
+            2: begin
+               case j of
+                     1: begin arrayStrings[i][j]:= 'A:' end;
+                     2: begin arrayStrings[i][j]:= '' end;
+                     3: begin arrayStrings[i][j]:= 'x' end;
+                     4: begin arrayStrings[i][j]:= 'x' end;
+                     5: begin arrayStrings[i][j]:= 'x' end;
+                     6: begin arrayStrings[i][j]:= 'x' end;
+                     7: begin arrayStrings[i][j]:= 'x' end;
+                     8: begin arrayStrings[i][j]:= 'x' end;
+                     9: begin arrayStrings[i][j]:= 'x' end;
+                     10:begin arrayStrings[i][j]:= 'x' end;
+               end;
+            end;
+            3: begin
+               case j of
+                     1: begin arrayStrings[i][j]:= 'B:' end;
+                     2: begin arrayStrings[i][j]:= 'x' end;
+                     3: begin arrayStrings[i][j]:= '' end;
+                     4: begin arrayStrings[i][j]:= 'x' end;
+                     5: begin arrayStrings[i][j]:= 'x' end;
+                     6: begin arrayStrings[i][j]:= 'x' end;
+                     7: begin arrayStrings[i][j]:= 'x' end;
+                     8: begin arrayStrings[i][j]:= 'x' end;
+                     9: begin arrayStrings[i][j]:= 'x' end;
+                     10:begin arrayStrings[i][j]:= 'x' end;
+               end;
+            end;
+
+            4: begin
+               case j of
+                     1: begin arrayStrings[i][j]:= 'C:' end;
+                     2: begin arrayStrings[i][j]:= 'x' end;
+                     3: begin arrayStrings[i][j]:= 'x' end;
+                     4: begin arrayStrings[i][j]:= '' end;
+                     5: begin arrayStrings[i][j]:= 'x' end;
+                     6: begin arrayStrings[i][j]:= 'x' end;
+                     7: begin arrayStrings[i][j]:= 'x' end;
+                     8: begin arrayStrings[i][j]:= 'x' end;
+                     9: begin arrayStrings[i][j]:= 'x' end;
+                     10:begin arrayStrings[i][j]:= 'x'end;
+               end;
+            end;
+
+            5: begin
+               case j of
+                     1: begin arrayStrings[i][j]:= 'D:' end;
+                     2: begin arrayStrings[i][j]:= 'x' end;
+                     3: begin arrayStrings[i][j]:= 'x' end;
+                     4: begin arrayStrings[i][j]:= 'x' end;
+                     5: begin arrayStrings[i][j]:= '' end;
+                     6: begin arrayStrings[i][j]:= 'x' end;
+                     7: begin arrayStrings[i][j]:= 'x' end;
+                     8: begin arrayStrings[i][j]:= 'x' end;
+                     9: begin arrayStrings[i][j]:= 'x' end;
+                     10:begin arrayStrings[i][j]:= 'x' end;
+               end;
+            end;
+
+            6: begin
+               case j of
+                     1: begin arrayStrings[i][j]:= 'E:' end;
+                     2: begin arrayStrings[i][j]:= 'x' end;
+                     3: begin arrayStrings[i][j]:= 'x' end;
+                     4: begin arrayStrings[i][j]:= 'x' end;
+                     5: begin arrayStrings[i][j]:= 'x' end;
+                     6: begin arrayStrings[i][j]:= '' end;
+                     7: begin arrayStrings[i][j]:= 'x' end;
+                     8: begin arrayStrings[i][j]:= 'x' end;
+                     9: begin arrayStrings[i][j]:= 'x' end;
+                     10:begin arrayStrings[i][j]:= 'x' end;
+               end;
+            end;
+
+            7: begin
+               case j of
+                     1: begin arrayStrings[i][j]:= 'F:' end;
+                     2: begin arrayStrings[i][j]:= 'x' end;
+                     3: begin arrayStrings[i][j]:= 'x' end;
+                     4: begin arrayStrings[i][j]:= 'x' end;
+                     5: begin arrayStrings[i][j]:= 'x' end;
+                     6: begin arrayStrings[i][j]:= 'x' end;
+                     7: begin arrayStrings[i][j]:= '' end;
+                     8: begin arrayStrings[i][j]:= 'x' end;
+                     9: begin arrayStrings[i][j]:= 'x' end;
+                     10:begin arrayStrings[i][j]:= 'x' end;
+               end;
+            end;
+
+            8: begin
+               case j of
+                     1: begin arrayStrings[i][j]:= 'G:' end;
+                     2: begin arrayStrings[i][j]:= 'x' end;
+                     3: begin arrayStrings[i][j]:= 'x' end;
+                     4: begin arrayStrings[i][j]:= 'x' end;
+                     5: begin arrayStrings[i][j]:= 'x' end;
+                     6: begin arrayStrings[i][j]:= '' end;
+                     7: begin arrayStrings[i][j]:= 'x' end;
+                     8: begin arrayStrings[i][j]:= '' end;
+                     9: begin arrayStrings[i][j]:= 'x' end;
+                     10:begin arrayStrings[i][j]:= 'x' end;
+               end;
+            end;
+
+            9: begin
+               case j of
+                     1: begin arrayStrings[i][j]:= 'H:' end;
+                     2: begin arrayStrings[i][j]:= 'x' end;
+                     3: begin arrayStrings[i][j]:= 'x' end;
+                     4: begin arrayStrings[i][j]:= 'x' end;
+                     5: begin arrayStrings[i][j]:= 'x' end;
+                     6: begin arrayStrings[i][j]:= 'X' end;
+                     7: begin arrayStrings[i][j]:= 'x' end;
+                     8: begin arrayStrings[i][j]:= 'x' end;
+                     9: begin arrayStrings[i][j]:= '' end;
+                     10:begin arrayStrings[i][j]:= 'x' end;
+               end;
+            end;
+
+             10: begin
+               case j of
+                     1: begin arrayStrings[i][j]:= 'I:' end;
+                     2: begin arrayStrings[i][j]:= 'x' end;
+                     3: begin arrayStrings[i][j]:= 'x' end;
+                     4: begin arrayStrings[i][j]:= 'x' end;
+                     5: begin arrayStrings[i][j]:= 'x' end;
+                     6: begin arrayStrings[i][j]:= 'X' end;
+                     7: begin arrayStrings[i][j]:= 'x' end;
+                     8: begin arrayStrings[i][j]:= 'x' end;
+                     9: begin arrayStrings[i][j]:= 'x' end;
+                     10:begin arrayStrings[i][j]:= 'x' end;
+               end;
+            end;
+
+           11: begin
+               case j of
+                     1: begin arrayStrings[i][j]:= 'J:' end;
+                     2: begin arrayStrings[i][j]:= '' end;
+                     3: begin arrayStrings[i][j]:= 'x' end;
+                     4: begin arrayStrings[i][j]:= 'x' end;
+                     5: begin arrayStrings[i][j]:= 'x' end;
+                     6: begin arrayStrings[i][j]:= 'X' end;
+                     7: begin arrayStrings[i][j]:= 'x' end;
+                     8: begin arrayStrings[i][j]:= 'x' end;
+                     9: begin arrayStrings[i][j]:= 'x' end;
+                     10:begin arrayStrings[i][j]:= 'x' end;
+               end;
+            end;
+
+            12: begin
+               case j of
+                     1: begin arrayStrings[i][j]:= 'K:' end;
+                     2: begin arrayStrings[i][j]:= 'x' end;
+                     3: begin arrayStrings[i][j]:= '' end;
+                     4: begin arrayStrings[i][j]:= 'x' end;
+                     5: begin arrayStrings[i][j]:= 'x' end;
+                     6: begin arrayStrings[i][j]:= 'X' end;
+                     7: begin arrayStrings[i][j]:= 'x' end;
+                     8: begin arrayStrings[i][j]:= 'x' end;
+                     9: begin arrayStrings[i][j]:= 'x' end;
+                     10:begin arrayStrings[i][j]:= 'x' end;
+               end;
+            end;
+
+            13: begin
+               case j of
+                     1: begin arrayStrings[i][j]:= 'L:' end;
+                     2: begin arrayStrings[i][j]:= 'x' end;
+                     3: begin arrayStrings[i][j]:= 'x' end;
+                     4: begin arrayStrings[i][j]:= '' end;
+                     5: begin arrayStrings[i][j]:= 'x' end;
+                     6: begin arrayStrings[i][j]:= 'X' end;
+                     7: begin arrayStrings[i][j]:= 'x' end;
+                     8: begin arrayStrings[i][j]:= 'x' end;
+                     9: begin arrayStrings[i][j]:= 'x' end;
+                     10:begin arrayStrings[i][j]:= 'x' end;
+               end;
+            end;
+
+            14: begin
+               case j of
+                     1: begin arrayStrings[i][j]:= 'M:' end;
+                     2: begin arrayStrings[i][j]:= 'x' end;
+                     3: begin arrayStrings[i][j]:= 'x' end;
+                     4: begin arrayStrings[i][j]:= 'x' end;
+                     5: begin arrayStrings[i][j]:= '' end;
+                     6: begin arrayStrings[i][j]:= 'X' end;
+                     7: begin arrayStrings[i][j]:= 'x' end;
+                     8: begin arrayStrings[i][j]:= 'x' end;
+                     9: begin arrayStrings[i][j]:= 'x' end;
+                     10:begin arrayStrings[i][j]:= 'x' end;
+               end;
+            end;
+            15: begin
+               case j of
+                     1: begin arrayStrings[i][j]:= 'N:' end;
+                     2: begin arrayStrings[i][j]:= 'x' end;
+                     3: begin arrayStrings[i][j]:= 'x' end;
+                     4: begin arrayStrings[i][j]:= 'x' end;
+                     5: begin arrayStrings[i][j]:= '' end;
+                     6: begin arrayStrings[i][j]:= 'X' end;
+                     7: begin arrayStrings[i][j]:= 'x' end;
+                     8: begin arrayStrings[i][j]:= 'x' end;
+                     9: begin arrayStrings[i][j]:= 'x' end;
+                     10:begin arrayStrings[i][j]:= 'x' end;
+               end;
+            end;
+            16: begin
+               case j of
+                     1: begin arrayStrings[i][j]:= 'O:' end;
+                     2: begin arrayStrings[i][j]:= 'x' end;
+                     3: begin arrayStrings[i][j]:= 'x' end;
+                     4: begin arrayStrings[i][j]:= 'x' end;
+                     5: begin arrayStrings[i][j]:= '' end;
+                     6: begin arrayStrings[i][j]:= 'X' end;
+                     7: begin arrayStrings[i][j]:= 'x' end;
+                     8: begin arrayStrings[i][j]:= 'x' end;
+                     9: begin arrayStrings[i][j]:= 'x' end;
+                     10:begin arrayStrings[i][j]:= 'x' end;
+               end;
+            end;
+            17: begin
+               case j of
+                     1: begin arrayStrings[i][j]:= 'P:' end;
+                     2: begin arrayStrings[i][j]:= 'x' end;
+                     3: begin arrayStrings[i][j]:= 'x' end;
+                     4: begin arrayStrings[i][j]:= 'x' end;
+                     5: begin arrayStrings[i][j]:= '' end;
+                     6: begin arrayStrings[i][j]:= 'X' end;
+                     7: begin arrayStrings[i][j]:= 'x' end;
+                     8: begin arrayStrings[i][j]:= 'x' end;
+                     9: begin arrayStrings[i][j]:= 'x' end;
+                     10:begin arrayStrings[i][j]:= 'x' end;
+               end;
+            end;
+
+            18: begin
+               case j of
+                     1: begin arrayStrings[i][j]:= 'Q:' end;
+                     2: begin arrayStrings[i][j]:= 'x' end;
+                     3: begin arrayStrings[i][j]:= 'x' end;
+                     4: begin arrayStrings[i][j]:= 'x' end;
+                     5: begin arrayStrings[i][j]:= '' end;
+                     6: begin arrayStrings[i][j]:= 'X' end;
+                     7: begin arrayStrings[i][j]:= 'x' end;
+                     8: begin arrayStrings[i][j]:= 'x' end;
+                     9: begin arrayStrings[i][j]:= 'x' end;
+                     10:begin arrayStrings[i][j]:= 'x' end;
+               end;
+            end;
+            19: begin
+               case j of
+                     1: begin arrayStrings[i][j]:= 'R:' end;
+                     2: begin arrayStrings[i][j]:= 'x' end;
+                     3: begin arrayStrings[i][j]:= 'x' end;
+                     4: begin arrayStrings[i][j]:= 'x' end;
+                     5: begin arrayStrings[i][j]:= '' end;
+                     6: begin arrayStrings[i][j]:= 'X' end;
+                     7: begin arrayStrings[i][j]:= 'x' end;
+                     8: begin arrayStrings[i][j]:= 'x' end;
+                     9: begin arrayStrings[i][j]:= 'x' end;
+                     10:begin arrayStrings[i][j]:= 'x' end;
+               end;
+            end;
+            20: begin
+               case j of
+                     1: begin arrayStrings[i][j]:= 'S:' end;
+                     2: begin arrayStrings[i][j]:= 'x' end;
+                     3: begin arrayStrings[i][j]:= 'x' end;
+                     4: begin arrayStrings[i][j]:= 'x' end;
+                     5: begin arrayStrings[i][j]:= '' end;
+                     6: begin arrayStrings[i][j]:= 'X' end;
+                     7: begin arrayStrings[i][j]:= 'x' end;
+                     8: begin arrayStrings[i][j]:= 'x' end;
+                     9: begin arrayStrings[i][j]:= 'x' end;
+                     10:begin arrayStrings[i][j]:= 'x' end;
+               end;
+            end;
+            21: begin
+               case j of
+                     1: begin arrayStrings[i][j]:= 'T:' end;
+                     2: begin arrayStrings[i][j]:= 'x' end;
+                     3: begin arrayStrings[i][j]:= 'x' end;
+                     4: begin arrayStrings[i][j]:= 'x' end;
+                     5: begin arrayStrings[i][j]:= '' end;
+                     6: begin arrayStrings[i][j]:= 'X' end;
+                     7: begin arrayStrings[i][j]:= 'x' end;
+                     8: begin arrayStrings[i][j]:= 'x' end;
+                     9: begin arrayStrings[i][j]:= 'x' end;
+                     10:begin arrayStrings[i][j]:= 'x' end;
+               end;
+            end;
+
+            22: begin
+               case j of
+                     1: begin arrayStrings[i][j]:= 'U:' end;
+                     2: begin arrayStrings[i][j]:= 'x' end;
+                     3: begin arrayStrings[i][j]:= 'x' end;
+                     4: begin arrayStrings[i][j]:= 'x' end;
+                     5: begin arrayStrings[i][j]:= '' end;
+                     6: begin arrayStrings[i][j]:= 'X' end;
+                     7: begin arrayStrings[i][j]:= 'x' end;
+                     8: begin arrayStrings[i][j]:= 'x' end;
+                     9: begin arrayStrings[i][j]:= 'x' end;
+                     10:begin arrayStrings[i][j]:= 'x' end;
+               end;
+            end;
+            23: begin
+               case j of
+                     1: begin arrayStrings[i][j]:= 'V:' end;
+                     2: begin arrayStrings[i][j]:= 'x' end;
+                     3: begin arrayStrings[i][j]:= 'x' end;
+                     4: begin arrayStrings[i][j]:= 'x' end;
+                     5: begin arrayStrings[i][j]:= '' end;
+                     6: begin arrayStrings[i][j]:= 'X' end;
+                     7: begin arrayStrings[i][j]:= 'x' end;
+                     8: begin arrayStrings[i][j]:= 'x' end;
+                     9: begin arrayStrings[i][j]:= 'x' end;
+                     10:begin arrayStrings[i][j]:= 'x' end;
+               end;
+            end;
+
+            24: begin
+               case j of
+                     1: begin arrayStrings[i][j]:= 'W:' end;
+                     2: begin arrayStrings[i][j]:= 'x' end;
+                     3: begin arrayStrings[i][j]:= 'x' end;
+                     4: begin arrayStrings[i][j]:= 'x' end;
+                     5: begin arrayStrings[i][j]:= '' end;
+                     6: begin arrayStrings[i][j]:= 'X' end;
+                     7: begin arrayStrings[i][j]:= 'x' end;
+                     8: begin arrayStrings[i][j]:= 'x' end;
+                     9: begin arrayStrings[i][j]:= 'x' end;
+                     10:begin arrayStrings[i][j]:= 'x' end;
+               end;
+            end;
+            25: begin
+               case j of
+                     1: begin arrayStrings[i][j]:= 'Y:' end;
+                     2: begin arrayStrings[i][j]:= 'x' end;
+                     3: begin arrayStrings[i][j]:= 'x' end;
+                     4: begin arrayStrings[i][j]:= 'x' end;
+                     5: begin arrayStrings[i][j]:= '' end;
+                     6: begin arrayStrings[i][j]:= 'X' end;
+                     7: begin arrayStrings[i][j]:= 'x' end;
+                     8: begin arrayStrings[i][j]:= 'x' end;
+                     9: begin arrayStrings[i][j]:= 'x' end;
+                     10:begin arrayStrings[i][j]:= 'x' end;
+               end;
+            end;
+            26: begin
+               case j of
+                     1: begin arrayStrings[i][j]:= 'Z:' end;
+                     2: begin arrayStrings[i][j]:= 'x' end;
+                     3: begin arrayStrings[i][j]:= 'x' end;
+                     4: begin arrayStrings[i][j]:= 'x' end;
+                     5: begin arrayStrings[i][j]:= '' end;
+                     6: begin arrayStrings[i][j]:= 'X' end;
+                     7: begin arrayStrings[i][j]:= 'x' end;
+                     8: begin arrayStrings[i][j]:= 'x' end;
+                     9: begin arrayStrings[i][j]:= 'x' end;
+                     10:begin arrayStrings[i][j]:= 'x' end;
+               end;
+            end;
+         end;
+
+      end;
+
+    end;
+  except
+    ShowMessage('erro no array');
+  end;
+
+  for i :=1 to length(arrayStrings) do
+  begin
+      for j := 1 to Length(arrayStrings[j]) do
+      begin
+
+
+       StringGrid1.Cells[j, i] := arrayStrings[i][j];
+
+
+      end;
+  end;
+
+
+end;
+
+end.
